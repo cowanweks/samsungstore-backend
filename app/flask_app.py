@@ -25,10 +25,10 @@ def create_app() -> Flask:
     app.url_map.strict_slashes = False
 
     # Set the application configuration
-    if os.getenv("ENV") == "production":
+    if os.getenv("APP_ENV") == "production":
         app.config.from_object(ProductionConfig)
 
-    elif os.getenv("ENV") == "development":
+    elif os.getenv("APP_ENV") == "development":
         app.config.from_object(DevelopmentConfig)
 
     else:
@@ -55,7 +55,7 @@ def create_app() -> Flask:
     print(
         bcolors.OKGREEN
         + f"""[*] - You are running {app.config.get('APP_NAME')} in {app.config.get(
-            'ENV')} on HOST {app.config.get("HOST")} on PORT {app.config.get("PORT")} with {app.config.get("SQLALCHEMY_DATABASE_URI")} as database URI !"""
+            'APP_ENV')} on HOST {app.config.get("HOST")} on PORT {app.config.get("PORT")} with {app.config.get("SQLALCHEMY_DATABASE_URI")} as database URI !"""
     )
 
     return app

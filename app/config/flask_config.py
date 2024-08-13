@@ -37,7 +37,7 @@ class Config(DBConfig):
 class DevelopmentConfig(Config):
     """Config for Development"""
 
-    ENV = "development"
+    APP_ENV = "development"
     pass
 
 
@@ -45,14 +45,15 @@ class TestingConfig(Config):
     """Config for Testing"""
 
     SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
-    ENV = "testing"
+    APP_ENV = "testing"
     TESTING = True
 
 
 class ProductionConfig(Config):
     """Config for Production"""
 
-    ENV = "production"
+    APP_ENV = "production"
     DEBUG = False
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://ohvomqcn:zy3VFG-FlCYScCpEyyGRT3xwehbvZ-Au@suleiman.db.elephantsql.com/ohvomqcn"
+    SQLALCHEMY_DATABASE_URI =\
+        "postgresql://ohvomqcn:zy3VFG-FlCYScCpEyyGRT3xwehbvZ-Au@suleiman.db.elephantsql.com/ohvomqcn"
