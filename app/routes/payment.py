@@ -11,8 +11,6 @@ from flask import Blueprint, request, jsonify, current_app
 # Payment blueprint
 payment_route = Blueprint("payment_route", __name__, url_prefix="/api/payment")
 
-BASE_URL = os.getenv("BASE_URL")
-
 
 def get_mpesa_access_token():
     mpesa_auth_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
@@ -45,14 +43,18 @@ def get_access_token_route():
 
 @payment_route.get("/register_urls")
 def register_urls_route():
+
+    with current_app.app_context():
+        baseurl = current_app.config.get("BASE_URL")
+
     mpesa_endpoint_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
     access_token = get_mpesa_access_token()
     req_headers = {"Authorization": "Bearer %s" % access_token}
     req_body = {
         "ShortCode": "601426",
         "ResponseType": "Completed",
-        "ConfirmationURL": BASE_URL + "/payment/confirm",
-        "ValidationURL": BASE_URL + "/payment/validate"
+        "ConfirmationURL": baseurl + "/payment/confirm",
+        "ValidationURL": baseurl + "/payment/validate"
     }
 
     response_data = requests.post(mpesa_endpoint_url, headers=req_headers, json=req_body)
@@ -108,6 +110,9 @@ def simulate_route():
 
 @payment_route.get("/pay")
 def pay_route():
+    with current_app.app_context():
+        baseurl = current_app.config.get("BASE_URL")
+
     phone_number = request.args.get("phone_number")
     total_amount = request.args.get("total_amount")
     transaction_description = request.args.get("transaction_description")
@@ -118,7 +123,7 @@ def pay_route():
     if not phone_number:
         return jsonify("Phone number not provided"), 400
 
-    my_endpoint = BASE_URL + "/api/payment/success"
+    my_endpoint = baseurl + "/api/payment/success"
     mpesa_endpoint_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
     access_token = get_mpesa_access_token()
     req_headers = {

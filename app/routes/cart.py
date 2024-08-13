@@ -2,7 +2,7 @@ import os
 from flask import (
     Blueprint,
     request,
-    jsonify, Response,
+    jsonify, Response, current_app,
 )
 import requests
 from uuid import uuid4
@@ -16,10 +16,6 @@ from app.utils import generate_tracking_number
 
 load_dotenv(find_dotenv())
 
-BASE_URL = os.getenv("BASE_URL")
-
-if BASE_URL is None:
-    raise Exception("BASE_URL not provided!")
 
 cart_route = Blueprint("cart_route", __name__, url_prefix="/api/cart")
 
@@ -114,6 +110,9 @@ def view_cart_route(cart_id: str):
 def checkout_cart(cart_id: str):
     """New Order"""
 
+    with current_app.app_context():
+        baseurl = current_app.config.get("BASE_URL")
+
     cart = db.session.query(Cart).filter_by(cart_id=cart_id).scalar()
 
     if not cart:
@@ -126,7 +125,7 @@ def checkout_cart(cart_id: str):
 
         if new_order_form.validate():
 
-            payment_url = BASE_URL + "/payment/pay?phone_number={}&total_amount={}".format(
+            payment_url = baseurl + "/payment/pay?phone_number={}&total_amount={}".format(
                 new_order_form.mpesa_number.data, total_amount
             )
 

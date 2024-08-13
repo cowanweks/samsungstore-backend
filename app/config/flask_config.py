@@ -23,6 +23,7 @@ class Config(DBConfig):
     TESTING = False
     HOST = "0.0.0.0"
     WTF_CSRF_ENABLED = False
+    BASE_URL = os.getenv("BASE_URL") or "127.0.0.1"
 
     # Session settings
     SESSION_TYPE = "cachelib"

@@ -1,4 +1,4 @@
-import os.path
+import os
 from flask import send_from_directory
 from app import create_app
 
@@ -18,6 +18,7 @@ def static_file(path):
 
 
 def main():
+    os.environ["BASE_URL"] = "https://web-production-7579e.up.railway.app/"
     flask_app.run(host=flask_app.config.get("HOST"), port=flask_app.config.get("PORT"))
 
 

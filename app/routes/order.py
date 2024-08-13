@@ -1,13 +1,11 @@
 import os
 
 import requests
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, current_app
 from app.controllers.mailing import send_email
 from app.models import db, Order, Product, CartItem
 
 order_route = Blueprint("order_route", __name__, url_prefix="/api/orders")
-
-BASE_URL = os.getenv("BASE_URL")
 
 
 @order_route.get("/")
@@ -182,29 +180,32 @@ def email_store():
 @order_route.get("/complete_order")
 def complete_order_after_payment():
 
+    with current_app.app_context():
+        baseurl = current_app.config.get("BASE_URL")
+
     payment_request_id = request.args.get("payment_request_id")
     order_id = request.args.get("order_id")
 
     order = db.session.query(Order).filter_by(order_id=order_id).scalar()
 
-    response = requests.get("{}/payment/check_status/{}".format(BASE_URL, payment_request_id))
+    response = requests.get("{}/payment/check_status/{}".format(baseurl, payment_request_id))
     response_data = response.json()
 
     if response.status_code == 200:
 
         if response_data["status"] == 1:
             # Clear the shopping cart
-            response = requests.get("{}/cart/clear?cart_id={}".format(BASE_URL, order.cart_id))
+            response = requests.get("{}/cart/clear?cart_id={}".format(baseurl, order.cart_id))
 
             if response.status_code == 200:
                 # Update the Product stock amount
                 response = requests.get("{}/orders/update_stock?cart_id={}"
-                                        .format(BASE_URL, order.cart_id))
+                                        .format(baseurl, order.cart_id))
 
                 if response.status_code == 200:
                     # Email customer the order number and the tracking number
                     response = requests.post(
-                        f"{BASE_URL}/orders/email_customer?order_id={order.order_id}"
+                        f"{baseurl}/orders/email_customer?order_id={order.order_id}"
                         f"&first_name={order.first_name}"
                         f"&email_address={order.email_address}"
                         f"&tracking_number={order.tracking_number}"
@@ -219,7 +220,7 @@ def complete_order_after_payment():
                             db.session.commit()
 
                             response = requests.get(
-                                f"{BASE_URL}/orders/email_store?order_id={order_id}"
+                                f"{baseurl}/orders/email_store?order_id={order_id}"
                                 f"&total_amount={order.total_amount}&tracking_number={order.tracking_number}")
 
                             if response.status_code == 200:
