@@ -9,7 +9,6 @@ flask_app.static_folder = "static"
 
 @flask_app.route("/")
 def index_page():
-    print("Hello")
     return send_from_directory('static', 'index.html')
 
 

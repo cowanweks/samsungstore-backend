@@ -1,0 +1,87 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="60">
+            <item index="0" class="java.lang.String" itemvalue="npyscreen" />
+            <item index="1" class="java.lang.String" itemvalue="sphinxcontrib-applehelp" />
+            <item index="2" class="java.lang.String" itemvalue="application-utility" />
+            <item index="3" class="java.lang.String" itemvalue="Babel" />
+            <item index="4" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="5" class="java.lang.String" itemvalue="ufw" />
+            <item index="6" class="java.lang.String" itemvalue="apparmor" />
+            <item index="7" class="java.lang.String" itemvalue="defusedxml" />
+            <item index="8" class="java.lang.String" itemvalue="pycairo" />
+            <item index="9" class="java.lang.String" itemvalue="pycparser" />
+            <item index="10" class="java.lang.String" itemvalue="PyGObject" />
+            <item index="11" class="java.lang.String" itemvalue="markdown-it-py" />
+            <item index="12" class="java.lang.String" itemvalue="catfish" />
+            <item index="13" class="java.lang.String" itemvalue="gufw" />
+            <item index="14" class="java.lang.String" itemvalue="snowballstemmer" />
+            <item index="15" class="java.lang.String" itemvalue="docopt" />
+            <item index="16" class="java.lang.String" itemvalue="filelock" />
+            <item index="17" class="java.lang.String" itemvalue="Pygments" />
+            <item index="18" class="java.lang.String" itemvalue="sphinxcontrib-qthelp" />
+            <item index="19" class="java.lang.String" itemvalue="docutils" />
+            <item index="20" class="java.lang.String" itemvalue="keyutils" />
+            <item index="21" class="java.lang.String" itemvalue="LibAppArmor" />
+            <item index="22" class="java.lang.String" itemvalue="cryptography" />
+            <item index="23" class="java.lang.String" itemvalue="pexpect" />
+            <item index="24" class="java.lang.String" itemvalue="sphinxcontrib-htmlhelp" />
+            <item index="25" class="java.lang.String" itemvalue="attrs" />
+            <item index="26" class="java.lang.String" itemvalue="psutil" />
+            <item index="27" class="java.lang.String" itemvalue="pyxdg" />
+            <item index="28" class="java.lang.String" itemvalue="platformdirs" />
+            <item index="29" class="java.lang.String" itemvalue="PySocks" />
+            <item index="30" class="java.lang.String" itemvalue="httpie" />
+            <item index="31" class="java.lang.String" itemvalue="mugshot" />
+            <item index="32" class="java.lang.String" itemvalue="virtualenv" />
+            <item index="33" class="java.lang.String" itemvalue="uc-micro-py" />
+            <item index="34" class="java.lang.String" itemvalue="idna" />
+            <item index="35" class="java.lang.String" itemvalue="ptyprocess" />
+            <item index="36" class="java.lang.String" itemvalue="cffi" />
+            <item index="37" class="java.lang.String" itemvalue="menulibre" />
+            <item index="38" class="java.lang.String" itemvalue="lightdm-gtk-greeter-settings" />
+            <item index="39" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="40" class="java.lang.String" itemvalue="sphinxcontrib-devhelp" />
+            <item index="41" class="java.lang.String" itemvalue="alabaster" />
+            <item index="42" class="java.lang.String" itemvalue="mdurl" />
+            <item index="43" class="java.lang.String" itemvalue="urllib3" />
+            <item index="44" class="java.lang.String" itemvalue="sphinxcontrib-serializinghtml" />
+            <item index="45" class="java.lang.String" itemvalue="pacman_mirrors" />
+            <item index="46" class="java.lang.String" itemvalue="wheel" />
+            <item index="47" class="java.lang.String" itemvalue="nftables" />
+            <item index="48" class="java.lang.String" itemvalue="rich" />
+            <item index="49" class="java.lang.String" itemvalue="imagesize" />
+            <item index="50" class="java.lang.String" itemvalue="packaging" />
+            <item index="51" class="java.lang.String" itemvalue="btrfsutil" />
+            <item index="52" class="java.lang.String" itemvalue="Sphinx" />
+            <item index="53" class="java.lang.String" itemvalue="udiskie" />
+            <item index="54" class="java.lang.String" itemvalue="sphinxcontrib-jsmath" />
+            <item index="55" class="java.lang.String" itemvalue="multidict" />
+            <item index="56" class="java.lang.String" itemvalue="dbus-python" />
+            <item index="57" class="java.lang.String" itemvalue="pytz" />
+            <item index="58" class="java.lang.String" itemvalue="lensfun" />
+            <item index="59" class="java.lang.String" itemvalue="requests-toolbelt" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="list.get" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
