@@ -23,6 +23,8 @@ class Config(DBConfig):
     TESTING = False
     HOST = "0.0.0.0"
     WTF_CSRF_ENABLED = False
+    SMTP_USER = os.getenv("SMTP_USER")
+    SMTP_PASSWD = os.getenv("SMTP_PASSWD")
     BASE_URL = os.getenv("BASE_URL") or "127.0.0.1"
 
     # Session settings

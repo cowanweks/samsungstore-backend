@@ -146,6 +146,9 @@ samsungphonesandspairecentre@gmail.com
 @order_route.get("/email_store")
 def email_store():
 
+    with current_app.app_context():
+        smtp_user = current_app.config.get("SMTP_USER")
+
     order_id = request.args.get("order_id")
     total_amount = request.args.get("total_amount")
     email_address = request.args.get("email_address")
@@ -164,7 +167,7 @@ def email_store():
         return jsonify("Tracking Number Not Provided"), 400
 
     if send_email(
-        os.getenv("SMTP_USER"),
+        smtp_user,
         "samsungphonesandspairecentre@gmail.com"
         ,
         f"New Order Placed: {order_id}",
