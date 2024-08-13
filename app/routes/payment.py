@@ -13,6 +13,7 @@ payment_route = Blueprint("payment_route", __name__, url_prefix="/api/payment")
 
 BASE_URL = os.getenv("BASE_URL")
 
+
 def get_mpesa_access_token():
     mpesa_auth_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     consumer_key = '2y8zOJ5AXxtnYFneBiAfjI4hwOVyxPwU'
